@@ -1,0 +1,16 @@
+\section{Methods}
+
+
+\subsection{RNA Extraction, Library Preparation, and Sequencing}
+
+
+We performed RNA extraction in TRIzol (Life Technologies, Grand Island, NY) according to manufacturer instructions, except with a higher concentration of glycogen as carrier (20 ng) and a higher relative volume of TRIzol to the expected material (1 mL, as in \cite{Lott:2011cc} and \cite{Combs:2013jy}). We quantified RNA concentrations using 
+
+
+Libraries were quantified using a combination of Qubit High Sensitivity DNA (Life Technologies) and Bioanalyzer (Agilent Technologies, Sunnyvale, CA) readings, then pooled to equalize index concentration. Pooled libraries were then submitted to the Vincent Coates Genome Sequencing Laboratory for 50bp paired-end sequencing according to standard protocols for the Illumina HiSeq 2500. Bases were called using HiSeq Control Software v1.8 and Real Time Analysis v2.8.
+
+
+\subsection{Mapping and Quantification}
+
+
+Reads were mapped using STAR \cite{Dobin:2012fg} to a combination of the FlyBase reference genome version 5.54 for {\em D. melanogaster} and SGD reference genome R64-1-1 for {\em S. cerevisiae} \cite{McQuilton:2011iq,Cherry:2012kb}. Reads were then assigned to either the D. melanogaster or carrier genomes if there were at least 4 positions per read to prefer one species over the other. We used only the reads that mapped to D. melanogaster to generate transcript abundances in Cufflinks v. 2.1.1\cite{Roberts:2012kp}.
