@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+%\pdfoutput=1
+% Uncomment for arXiv submission.
+
+\usepackage[mathlines]{lineno}
+\begin{document}
+
+\title{Validation of methods for Low-volume RNA-seq}
+\author{Peter A. Combs\footnote{Graduate Group in Biophysics, University of California, Berkeley 94720}, and Michael B. Eisen\footnote{Department of Molecular and Cell Biology and Howard Hughes Medical Institute, University of California, Berkeley 94720}}
+\maketitle
+\linenumbers
+
+\abstract{
+}
+
+\section{Introduction}
+
+In particular, we felt that published descriptions of ``single-cell'' and other low-volume protocols did not adequately address whether a change in concentration of a given RNA between two samples would result in a proportional change in the FPKM values between those samples. While there are biases inherent to any protocol, we were concerned that direct amplification of the mRNA would select for PCR compatible genes in difficult to predict, and potentially non-linear ways.  For certain applications, this may not be a critical flaw, for instance in assigning a single cell to a specific tissue type within a non-homogenous tissue.  However, to measure spatial and temporal activation of genes across an embryo, it is important that the output is monotonic with respect to concentration, and ideally linear.
+
+While it is possible to estimate absolute numbers of cellular RNAs from an RNAseq experiment, doing so requires spike-ins of known concentration and estimates of total cellular RNA content \cite{Mortazavi:2008jj}. However, many RNAseq experiments do not do this controls, nor are such controls necessary if the absolute number is not necessary. While ultimately absolute concentrations will be necessary to fully predict properties such as noise tolerance of the regulatory circuits \cite{Gregor:2007du,Gregor:2005jn}, many current modeling efforts rely only on scaled concentration measurements, often derived from {\em in situ-hybridization} experiments \cite{Garcia:2013fs,Ilsley:2013fk,He:2010ix}.  Given that, we felt it was not important that different protocols should necessarily agree on the expression FPKM values for any given gene.
+
+\section{Results}
+
+\subsection{Experiment 1: Evaluation of Illumina TruSeq}
+
+In our hands, the Illumina TruSeq protocol has performed extremely reliably with samples on the scale of ~100ng of total RNA.  However, attempts to create libraries from smaller samples yielded low complexity libraries, corresponding to approximately 30-fold PCR duplication of fragments. Anecdotally, less than 5\% of libraries made with at least 90ng of total RNA yielded abnormally low concentrations, which we observed correlated with low complexity (Data not shown). To determine the lower limit of input needed to reliably produce libraries, we attempted to make libraries from 40, 50, 60, 70, and 80 ng of {\em Drosophila} total RNA, each in triplicate.
+
+\begin{table}[htdp]
+\caption{Total cDNA yields from TruSeq libraries made with a given amount of input total RNA.  Yields measured by Nanodrop of cDNA libraries resuspended in 25$\mu L$ of EB. The underlined samples were unusually low, and when analyzed with a Bioanalyzer, showed abnormal size distribution of cDNA fragments.}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}\hline
+Amount Input RNA & Replicate A & Replicate B & Replicate C\\\hline
+40 ng & \underline{ 57 ng}  & 425 ng & 672 ng\\
+50 ng & 435 ng & 768 ng & 755 ng\\
+60 ng & \underline{ 115 ng} & 663 ng & 668 ng\\
+70 ng & 300 ng & 593 ng & 653 ng\\
+80 ng & 468 ng & 550 ng & 840 ng\\\hline
+\end{tabular}
+\end{center}
+\label{table:truseqtitration}
+\end{table}
+
+
+
+ 
+
+\subsection{Experiment 2: Competitive Comparison of Low-volume RNA protocols}
+
+We first sought to determine whether the low-volume RNAseq protocols available faithfully recapitulate linear changes in abundance of known inputs. We generated synthetic spike-ins by combining {\em D. melanogaster} and {\em D. virilis} total RNA in known, predefined proportions of 0, 5, 10, and 20\% {\em D. virilis} RNA. For each of the low-volume protocols, we used 1ng of total RNA as input, whereas for the TruSeq protocol we used 100ng.
+
+The different protocols had a variation in yield of libraries from between 6 fmole (approximately 3.6 trillion molecules) and 2,400 femtomoles, with the TruSeq a clear outlier at the high end of the range, and the other protocols all below 200 fmole \ref{tab:round1protocols}.  Due to a pooling error, we generated significantly more reads than intended for the TruSeq protocol, and correspondingly fewer in the other protocols. Unless otherwise noted, we therefore sub-sampled the mapped reads to the lowest number of total reads in order to provide a fair comparison between protocols. 
+
+
+
+\subsection{Experiment 3: Further modifications to the SMART-seq2 protocol}
+
+
+
+
+\section{Discussion}
+
+When sample size is not the limiting factor, it is clear that using well-established protocols that involve minimal sequence-specific manipulation of the sample yields the best results, both in terms of reproducibility and linearity of response. Such methods should be strongly preferred if it is feasible to collect a suitably homogenous sample. While bulk tissues may be a mixture of multiple distinct cell types, this may or may not affect the particular research question an RNAseq experiment is designed to answer.  In our hands, the lower limit of reliable library construction using the Illumina TruSeq kit is approximately 70ng of total RNA; although we believe there is significant user-to-user variation, it seems unreasonable to expect order-of-magnitude improvements are possible. We suggest that this limit may be related to cDNA binding to tubes or purification beads, but since the quantities are lower than the detection threshold of many standard quality control approaches, we cannot directly verify this, nor do we believe that knowing the precise cause is likely to suggest remediation techniques.
+
+Compared to the regimes these protocols were designed for, we used a relatively large amount of input RNA---1 ng of total RNA---corresponding to approximately 50 nuclei of a mid-blastula transition {\em Drosophila} embryo. Previous studies have shown that this amount of RNA is well above the level where stochastic variation in the number of mRNAs per cell will strongly affect the measured expression of a vast majority of genes \cite{Marinov:2013fm}. It is nevertheless a small enough quantity to be experimentally relevant.  For instance, we have previously dissected single embryos into approximately 12 sections, yielding approximately 10ng per section\cite{Combs:2013jy}, and one could conceivably perform similar experiments on imaginal discs or antennal structures, which contain a similar amount of cells \cite{Klebes:2002ua,Hansson:2000cx}.
+
+ 
+
+\section{Methods}
+
+\subsection{RNA Extraction, Library Preparation, and Sequencing}
+
+We performed RNA extraction in TRIzol (Life Technologies, Grand Island, NY) according to manufacturer instructions, except with a higher concentration of glycogen as carrier (20 ng) and a higher relative volume of TRIzol to the expected material (1 mL, as in \cite{Lott:2011cc} and \cite{Combs:2013jy}). We quantified RNA concentrations using a fluorometric Qubit RNA HS assay (Life Technologies). 
+
+TruSeq libraries were prepared with the ``TruSeq RNA Sample Preparation Kit v2'' (Illumina Cat.#RS-122-2001) according to manufacturer instructions, except for the following modifications. All reactions were performed in half the volume of reagents. We find that this increases the effective concentration of RNA and cDNA.  We performed all reactions and cleanups in 8-tube PCR strip tubes, which allowed us to reduce the volume of Resuspension Buffer to minimize volume left behind after each cleanup.
+
+Clontech libraries were prepared with the ``Low Input Library Prep Kit'' (Clontech Cat.#634947). We generated cDNA by using TruSeq reagents until the cDNA synthesis step. Then, we used the Low Input Library Prep Kit to modify the cDNA into sequencing-competent libraries. We believe that a similar cDNA synthesis could be performed using oligo dT Dynabeads, RNA fragmentation reagents, and Superscript II (Life Technologies), for an approximate cost per sample of \$15. 
+
+TotalScript libraries were prepared with the ``TotalScript RNA-Seq Kit'' and ``TotalScript Index Kit'' (Epicentre Cat.#TSRNA1296 and TSIDX12910). We followed the manufacturer's instructions, and used the oligo dT priming option.  We performed the mixed priming option in parallel, which yielded approximately 4-fold more library, but did not sequence them due to concerns of ribosomal contamination.
+
+SMARTseq2 libraries were prepared according to the protocol in Picelli {\em et al.}(2014) \cite{Picelli:2014kg}.  Because we had already extracted and mixed the RNA, we began at step 5 with 3.7 $\mu L$ of dNTPs and 1 $\mu L$ of 37 $\mu M$ oligo dT primer, yielding the same concentration of primer and oligo as originally reported. We used 18 cycles for the preamplification PCR in step 14, added 1ng of cDNA to the Nextera XT reactions in step 28, and used 6 and 8 cycles for the final enrichment in step 33 (experiments 2 and 3, respectively).
+
+Libraries were quantified using a combination of Qubit High Sensitivity DNA (Life Technologies) and Bioanalyzer (Agilent Technologies, Sunnyvale, CA) readings, then pooled to equalize index concentration. Due to a pooling error in experiment 2, the TruSeq libraries were included at much higher abundance. Pooled libraries were then submitted to the Vincent Coates Genome Sequencing Laboratory for 50bp single-end sequencing according to standard protocols for the Illumina HiSeq 2500. Bases were called using HiSeq Control Software v1.8 and Real Time Analysis v2.8.
+
+\subsection{Mapping and Quantification}
+
+Reads were mapped using STAR \cite{Dobin:2012fg} to a combination of the FlyBase reference genome version 5.54 for {\em D. melanogaster} and SGD reference genome R64-1-1 for {\em S. cerevisiae} \cite{McQuilton:2011iq,Cherry:2012kb}. Reads were then assigned to either the D. melanogaster or carrier genomes if there were at least 4 positions per read to prefer one species over the other. We used only the reads that mapped to D. melanogaster to generate transcript abundances in Cufflinks v. 2.1.1\cite{Roberts:2012kp}.
+
+
+\section{Acknowledgements}
+
+\section{Additional Information and Declarations}
+\subsection{Competing Interests}
+The authors declare no competing interests exist.
+
+\subsection{Author Contributions}
+Peter A. Combs conceived and designed the experiments, analyzed the data, and wrote the paper.
+
+Michael B. Eisen conceived and designed the experiments and wrote the paper.
+
+\subsection{Data Deposition}
+
+\subsection{Funding}
+PAC is supported by National Institutes of Health training grant \#T32 HG 00047. MBE is a Howard Hughes Medical Institute Investigator. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.
+\bibliographystyle{plain}
+\bibliography{papers}
+
+\end{document}
