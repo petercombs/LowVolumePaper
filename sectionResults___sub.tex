@@ -3,10 +3,10 @@
 
 \subsection{Experiment 1: Evaluation of Illumina TruSeq}
 
-In our hands, the Illumina TruSeq protocol has performed extremely reliably with samples on the scale of ~100ng of total RNA.  However, attempts to create libraries from smaller samples yielded low complexity libraries, corresponding to approximately 30-fold PCR duplication of fragments. Anecdotally, less than 5\% of libraries made with at least 90ng of total RNA yielded abnormally low concentrations, which we observed correlated with low complexity (Data not shown). To determine the lower limit of input needed to reliably produce libraries, we attempted to make libraries from 40, 50, 60, 70, and 80 ng of {\em Drosophila} total RNA, each in triplicate.
+In our hands, the Illumina TruSeq protocol has performed extremely reliably with samples on the scale of ~100ng of total RNA, the published lower limit of the protocol.  However, attempts to create libraries from smaller samples yielded low complexity libraries, corresponding to as much as 30-fold PCR duplication of fragments. Anecdotally, less than 5\% of libraries made with at least 90ng of total RNA yielded abnormally low concentrations, which we observed correlated with low complexity (Data not shown). To determine the lower limit of input needed to reliably produce libraries, we attempted to make libraries from 40, 50, 60, 70, and 80 ng of {\em Drosophila} total RNA, each in triplicate.
 
 \begin{table}[htdp]
-\caption{Total cDNA yields from TruSeq libraries made with a given amount of input total RNA.  Yields measured by Nanodrop of cDNA libraries resuspended in 25$\mu L$ of EB. The italicized samples were unusually low, and when analyzed with a Bioanalyzer, showed abnormal size distribution of cDNA fragments.}
+\caption{Total TruSeq cDNA library yields made with a given amount of input total RNA.  Yields measured by Nanodrop of cDNA libraries resuspended in 25$\mu L$ of EB. The italicized samples were unusually low, and when analyzed with a Bioanalyzer, showed abnormal size distribution of cDNA fragments.}
 \begin{center}
 \begin{tabular}{|c|c|c|c|}\hline
 Amount Input RNA & Replicate A & Replicate B & Replicate C\\\hline
@@ -20,9 +20,9 @@ Amount Input RNA & Replicate A & Replicate B & Replicate C\\\hline
 \label{table:truseqtitration}
 \end{table}
 
+We considered the two libraries with lower than usual concentration to be failures.  While a failure rate of approximately 1 in 3 might be acceptable for some purposes, we ultimately wanted to perform RNA sequencing on precious samples, where a failure in any one of a dozen or more libraries would necessitate regenerating all of the libraries.  Furthermore, due to the low sample volumes involved (less than approximately 500pg of poly-adenylated mRNA), common laboratory equipment is not able to determine the particular point in the protocol where the failures occurred.  
 
-
-\subsection{Experiment 2: Competitive Comparison of Low-volume RNA protocols}
+\subsection{Experiment 2: Competitive Comparison of Low-volume RNAseq protocols}
 
 We first sought to determine whether the low-volume RNAseq protocols available faithfully recapitulate linear changes in abundance of known inputs. We generated synthetic spike-ins by combining {\em D. melanogaster} and {\em D. virilis} total RNA in known, predefined proportions of 0, 5, 10, and 20\% {\em D. virilis} RNA. For each of the low-volume protocols, we used 1ng of total RNA as input, whereas for the TruSeq protocol we used 100ng.
 
@@ -30,7 +30,7 @@ Although pre-defined mixes of spike-in controls are commercially available, we f
 
 The different protocols had a variation in yield of libraries from between 6 fmole (approximately 3.6 trillion molecules) and 2,400 femtomoles, with the TruSeq a clear outlier at the high end of the range, and the other protocols all below 200 fmole (Table \ref{tab:round1protocols}).  All of these quantities are sufficient to generate hundreds of millions of reads---far more than is typically required for an RNA-seq experiment. We pooled the samples, attempting equimolar fractions in the final pool; however, due to a pooling error, we generated significantly more reads than intended for the TruSeq protocol, and correspondingly fewer in the other protocols. Unless otherwise noted, we therefore sub-sampled the mapped reads to the lowest number of mapped reads in any sample in order to provide a fair comparison between protocols. 
 
-We were primarily interested in the fold-change of each {\em D. virilis} gene across the four samples, rather than the absolute abundance of any particular gene. Therefore, after mapping and gene quantification, we normalized the abundance $A_{ij}$ of every gene $i$ across the $j=4$ samples by a weighted average of the quantity $Q_j$ of {\em D. virilis} in sample $j$, as show in equation \ref{eqn:norm}.  Thus, within a given gene, a linear fit of $\hat{A}_{ij}$ vs $Q_j$ should have a slope of one and an intercept of zero.
+We were interested in the fold-change of each {\em D. virilis} gene across the four samples, rather than the absolute abundance of any particular gene. Therefore, after mapping and gene quantification, we normalized the abundance $A_{ij}$ of every gene $i$ across the $j=4$ samples by a weighted average of the quantity $Q_j$ of {\em D. virilis} in sample $j$, as show in equation \ref{eqn:norm}.  Thus, within a given gene, a linear fit of $\hat{A}_{ij}$ vs $Q_j$ should have a slope of one and an intercept of zero.
 
 \begin{equation} \label{eqn:norm}
 \hat{A}_{ij} = A_{ij} \div \frac{\sum_j Q_j A_{ij}}{\sum_j (Q_j)^2}  
