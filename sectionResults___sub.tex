@@ -33,7 +33,7 @@ The different protocols had a variation in yield of libraries from between 6 fmo
 We were primarily interested in the fold-change of each gene across the four samples, rather than the absolute abundance of any particular gene. Therefore, after mapping and gene quantification, we normalized the abundance $A$ of every gene $i$ across the $j=4$ samples by a weighted average of the quantity $Q_j$ of {\em D. virilis} in sample $j$, as show in equation \ref{eqn:norm}
 
 \begin{equation}
-\hat{A}_{ij} = A_{ij} \cdot \frac{\sum_j Q_j A_{ij}}{\sum_j Q_j^{2}}  
+\hat{A}_{ij} = A_{ij} \divide \frac{\sum_j Q_j A_{ij}}{\sum_j Q_j}  
 \label{eqn:norm}
 \end{equation}
 
