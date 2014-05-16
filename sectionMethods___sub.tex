@@ -13,4 +13,4 @@ Libraries were quantified using a combination of Qubit High Sensitivity DNA (Lif
 \subsection{Mapping and Quantification}
 
 
-Reads were mapped using STAR \cite{Dobin:2012fg} to a combination of the FlyBase reference genome version 5.54 for {\em D. melanogaster} and {\em D. virilis} \cite{McQuilton:2011iq}. We randomly sampled the mapped reads to use an equal number in each sample compared. We used {\tt htseq-count --idattr='gene_name' --stranded=no --sorted=pos} to count absolute read abundance per gene \cite{Anders_2014}.
+Reads were mapped using STAR \cite{Dobin:2012fg} to a combination of the FlyBase reference genome version 5.54 for {\em D. melanogaster} and {\em D. virilis} \cite{McQuilton:2011iq}. We randomly sampled the mapped reads to use an equal number in each sample compared. We used HTSeq (command line options "{\tt htseq-count --idattr='gene_name' --stranded=no --sorted=pos}") to count absolute read abundance per gene \cite{Anders_2014}.
