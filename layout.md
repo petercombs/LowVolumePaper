@@ -1,6 +1,7 @@
 abstract.tex
 sectionIntroduction_.tex
 sectionResults___sub.tex
+/Figure1.ai
 sectionDiscussion___.tex
 sectionMethods___sub.tex
 sectionAcknowledgeme.tex
