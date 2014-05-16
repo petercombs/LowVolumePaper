@@ -41,12 +41,3 @@ We were interested in the fold-change of each {\em D. virilis} gene across the f
 We filtered the {\em D. virilis} genes for those with at least 20 mapped fragments in the sample with 20\% {\em D. virilis}, then calculated an independent linear regression for each of those genes.  As expected, for every protocol, the mean slope was 1 ($t$-test, $p<5\times10^{-7}$ for all protocols).  Similarly, the average intercepts for all protocols was 0 ($t$-test, $p<5\times10^{-7}$ for all protocols).  Also unsurprisingly, the TruSeq protocol had a noticeably higher mean correlation coefficient ($0.98 \pm 0.02$) than any of the other protocols ($0.95 \pm 0.06$, $0.92\pm0.09$, and $0.95 \pm 0.06$ for Clontech, TotalScript, and SMART-seq2, respectively). The mean correlation coefficient was statistically and practically indistinguishable between the Clontech samples and the SMART-seq2 samples ($t$-test $p = .11$, Figure \ref{fig:fithists}).
 
 
-\subsection{Experiment 3: Further modifications to the SMART-seq2 protocol}
-
-Although the SMART-seq2 was the cheapest of the protocols, we wondered whether it could be performed even more cheaply without compromising data quality.  This would enable us to include more biological replicates in subsequent experiments.  In the original protocol, we noticed that roughly 60\% of the cost came from the Nextera XT reagents.  Thus, this seemed to be the most productive point to target.  
-
-We made additional libraries, again starting with 1ng of total RNA.  We amplified a single set of spike-in samples with 0, 5, 10, and 20\% {\em D. virilis} total RNA as in experiment 2, and made a single an additional sample with 1\% {\em D. virilis} RNA. Starting at the point in the SMART-seq2 protocol where tagmentation was started, we performed reactions in volumes $2.5\times$ and $5\times$ smaller, using proportionally less cDNA as well.  
-
-TALK ABOUT RESULTS HERE.
-
-Because we used a common set of pre-amplified cDNA samples that was performed in a distinct pre-amplification from experiment 2, we can estimate the contribution of that pre-amplification to the overall variation. If, in fact, the pre-amplification is a major contributor to the variation, then we would expect to find that the correlation between, for instance, the slopes of two runs of the same experiment with different pre-amplifications would be significantly lower than the correlation between the slopes of two runs using the same pre-amplified cDNA pools. 
