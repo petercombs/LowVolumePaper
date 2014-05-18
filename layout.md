@@ -1,7 +1,7 @@
 abstract.tex
 sectionIntroduction_.tex
 sectionResults___sub.tex
-Summary statistics for protocols.tex
+ProtocolTable.tex
 figures/Figure1/Figure1.png
 Experiment 3.tex
 figures/noisesource/noisesource_20.png
