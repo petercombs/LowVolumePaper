@@ -1,4 +1,19 @@
 \begin{table}[htdp]
+\caption{Summary of protocols used. Cost is estimated per sample assuming a
+     large number of libraries at US catalog prices as of May 2014, and includes RNA extraction.  }
+\begin{tabular}{|c|c|c|}
+Protocol & Shorthand & Cost/library \\\hline
+TruSeq & TruS & \$45 \\
+Clontech & CT & \$105 \\
+TotalScript & TotS & \$115 \\
+Smart-seq2 & SS & \$55 \\
+Smart-seq2, 2.5 fold dilution & SS---2.5x & \$28 \\
+Smart-seq2, 5 fold dilution & SS---5x & \$20 \\
+\end{tabular}
+\label{tab:protocolcosts}
+\end{table}
+
+\begin{table}[htdp]
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|} \hline
 Protocol & \% {\em D. virilis}  &  Yield (fmole) & Reads & Mapped \\\hline 
@@ -31,8 +46,7 @@ SS2---5x & 0 & 59.4  & 19,214,155 &17,324,598 \\
 \hline
 \end{tabular}
 \label{tab:protocols}
-\caption{Summary statistics for samples. Cost is estimated per sample assuming a
-     large number of libraries at US catalog prices as of May 2014. Total Reads
+\caption{Summary statistics for samples.  Total Reads
      and Mapped reads are for pooled libraries, run in a single HiSeq lane each
      for experiments 2 and 3}
 \end{center}
