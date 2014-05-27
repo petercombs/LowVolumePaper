@@ -22,6 +22,8 @@ Amount Input RNA & Replicate A & Replicate B & Replicate C\\\hline
 
 We considered the two libraries with lower than usual concentration to be failures.  While a failure rate of approximately 1 in 3 might be acceptable for some purposes, we ultimately wanted to perform RNA sequencing on precious samples, where a failure in any one of a dozen or more libraries would necessitate regenerating all of the libraries.  Furthermore, due to the low sample volumes involved (less than approximately 500pg of poly-adenylated mRNA), common laboratory equipment is not able to determine the particular point in the protocol where the failures occurred.  
 
+Thus, we consider 70 ng of total RNA to be the conservative lower limit to the protocol.  While this is about 30\% smaller than the manufacturer suggests, it is still several orders of magnitude larger than we needed it to be. We therefore considered using other small-volume and ``single-cell'' RNA-seq kits, which we had less experience with and less faith in the data.
+
 \subsection{Experiment 2: Competitive Comparison of Low-volume RNAseq protocols}
 
 We first sought to determine whether the low-volume RNAseq protocols available faithfully recapitulate linear changes in abundance of known inputs. We generated synthetic spike-ins by combining {\em D. melanogaster} and {\em D. virilis} total RNA in known, predefined proportions of 0, 5, 10, and 20\% {\em D. virilis} RNA. For each of the low-volume protocols, we used 1ng of total RNA as input, whereas for the TruSeq protocol we used 100ng.
